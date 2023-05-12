@@ -27,7 +27,7 @@ class Bot(Client):
        print("Bot Restarting........")
 
     
-user = pyrogram.Client(
+user = Client(
         "Userbot",
         api_id="APP_ID",
         api_hash="API_HASH",
