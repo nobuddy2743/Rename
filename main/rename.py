@@ -1,8 +1,17 @@
 import time, os
 from pyrogram import Client, filters, enums
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ForceReply
-from config import DOWNLOAD_LOCATION, CAPTION, ADMIN, GROUP_ID
+from config import DOWNLOAD_LOCATION, CAPTION, ADMIN, GROUP_ID, API_ID, API_HASH, USER_SESSION
 from main.utils import progress_message, humanbytes
+
+
+user = pyrogram.Client(
+    "Userbot",
+    api_id=API_ID,
+    api_hash=API_HASH,
+    user_session=USER_SESSION)
+    
+    
 
 @Client.on_message(filters.group & (filters.document | filters.video | filters.audio))         
 async def rename_file(bot, msg):
@@ -89,7 +98,7 @@ async def refunc(bot, msg):
         
  
       
-
+user.run()
 
 
 
