@@ -6,7 +6,7 @@ BOT_TOKEN = environ.get("BOT_TOKEN", "6125888099:AAEwsKbyXEJiENCKQAXMPxlFyu4u9HI
 ADMIN = int(environ.get("ADMIN", "1345158291"))          
 CAPTION = environ.get("CAPTION", "")
 GROUP_ID = int(environ.get("GROUP_ID", "-1001446318836")) 
-
+USER_SESSION = environ.get("USER_SESSION", "")
 # for thumbnail ( back end is MrMKN brain 😉)
 DOWNLOAD_LOCATION = "./DOWNLOADS"
 
