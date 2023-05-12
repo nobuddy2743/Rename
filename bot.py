@@ -2,6 +2,7 @@ from pyrogram import Client
 from config import *
 import os
 
+
 class Bot(Client):
     if not os.path.isdir(DOWNLOAD_LOCATION):
         os.makedirs(DOWNLOAD_LOCATION)
@@ -25,6 +26,13 @@ class Bot(Client):
        await super().stop()      
        print("Bot Restarting........")
 
-
+    
+user = pyrogram.Client(
+        "Userbot",
+        api_id="APP_ID",
+        api_hash="API_HASH",
+        user_session="USER_SESSION")
+       
 bot = Bot()
 bot.run()
+user.run()
