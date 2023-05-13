@@ -117,5 +117,8 @@ async def refunc(bot, msg):
     
 print("i")
 
-app1.run()
-app2.run()
+app1.start()
+app2.start()
+idle()
+app1.stop()
+app2.stop()
