@@ -60,7 +60,7 @@ async def rename(bot, msg):
 
 
 
-@app1.on_message(filters.group & filters.reply)
+@app2.on_message(filters.group & filters.reply)
 async def refunc(bot, msg):
     reply_message = msg.reply_to_message
     if (reply_message.reply_markup) and isinstance(reply_message.reply_markup, ForceReply):
@@ -100,7 +100,7 @@ async def refunc(bot, msg):
         await sts.edit("Trying to Uploading")
         c_time = time.time()
         try:
-            await app2.send_document(msg.chat.id, document=downloaded, thumb=og_thumbnail, caption=cap, progress=progress_message, progress_args=("Upload Started.....", sts, c_time))        
+            await bot.send_document(msg.chat.id, document=downloaded, thumb=og_thumbnail, caption=cap, progress=progress_message, progress_args=("Upload Started.....", sts, c_time))        
         except Exception as e:  
             return await sts.edit(f"Error {e}")                       
         try:
