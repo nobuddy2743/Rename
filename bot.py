@@ -25,7 +25,7 @@ app2 = Client(
         session_string=User_Session)
 
 
-@Client.on_message(filters.group & (filters.document | filters.video | filters.audio))         
+@app1.on_message(filters.group & (filters.document | filters.video | filters.audio))         
 async def rename_file(bot, msg):
     media = msg.document or msg.audio or msg.video
     og_media = getattr(msg, msg.media.value)
@@ -40,7 +40,7 @@ async def rename_file(bot, msg):
        return 
 
 
-@Client.on_callback_query(filters.regex('cancel'))
+@app1.on_callback_query(filters.regex('cancel'))
 async def cancel(bot, msg):
     try:
         await msg.message.delete()
@@ -48,7 +48,7 @@ async def cancel(bot, msg):
         return
     
 
-@Client.on_callback_query(filters.regex('rename'))
+@app1.on_callback_query(filters.regex('rename'))
 async def rename(bot, msg):
     await msg.message.delete()
     await msg.message.reply_text("Enter New Filename...", reply_to_message_id = msg.message.reply_to_message.id, reply_markup=ForceReply(True))
@@ -59,7 +59,7 @@ async def rename(bot, msg):
 
 
 
-@Client.on_message(filters.group & filters.reply)
+@app1.on_message(filters.group & filters.reply)
 async def refunc(bot, msg):
     reply_message = msg.reply_to_message
     if (reply_message.reply_markup) and isinstance(reply_message.reply_markup, ForceReply):
