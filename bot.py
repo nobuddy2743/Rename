@@ -4,11 +4,11 @@ import os
 
 
 plugins = dict( root="plugins")
-    Bot = pyrogram.Client(
+    Bot = Client(
         "AnyDLBot",
-        bot_token=Config.TG_BOT_TOKEN,
-        api_id=Config.APP_ID,
-        api_hash=Config.API_HASH,
+        bot_token=,
+        api_id=APP_ID,
+        api_hash=API_HASH,
         plugins=plugins)
 
     app2 = pyrogram.Client(
@@ -17,11 +17,11 @@ plugins = dict( root="plugins")
         api_hash=Config.API_HASH,
         user_session="hdjsjd")
 
-    app1.run()
-    app2.run()
 
     
-user = Client(
+
+    
+    user = Client(
         "Userbot",
         api_id="APP_ID",
         api_hash="API_HASH",
