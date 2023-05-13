@@ -28,7 +28,7 @@ app2 = Client(
 @app1.on_message(filters.command('rn')  & filters.group & filters.reply)
 async def rename(bot, message):
     reply = message.reply_to_message
-    get = await bot.get_messages(message.chat.id, reply.id)
+    get = await bot.get_messages(message.chat.id, reply_to_message.id)
     file = get.reply.id
     og_media = getattr(file, file.media.value)
     file_name = og_media.filename
