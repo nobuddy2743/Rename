@@ -37,7 +37,7 @@ async def rename(bot, messages):
             if not "." in new_name:
                 cp_name = new_name + " " + "@SingleMachiOffl"
                 f_name = cp_ name + ".MKV"
-            else 
+            else:
                 name = new_name.rsplit('.', 1)[-1]
                 cp_name = name_name + " " + "@SingleMachiOffl"
                 f_name = cp_name + ".MKV"
@@ -75,6 +75,8 @@ async def rename(bot, messages):
             except:
                 pass
             await sts.delete()
+       else:
+            await bot.send_message("It is fully automatic rename function.Reply with any file to rename")
 
        
         
