@@ -66,7 +66,7 @@ async def refunc(bot, msg):
     if (reply_message.reply_markup) and isinstance(reply_message.reply_markup, ForceReply):
         new_name = msg.text
         cp_name = new_name + " " + "@SingleMachiOffl"
-        get = await bot.get_messages(msg.chat.id, reply_message.id)
+        get = await app2.get_messages(msg.chat.id, reply_message.id)
         file = get.reply_to_message
         media = getattr(file, file.media.value)
         if not "." in new_name:
