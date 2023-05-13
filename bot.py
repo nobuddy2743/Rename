@@ -2,7 +2,7 @@ from pyrogram import Client
 from config import *
 import os
 import time
-from pyrogram import filters, enums
+from pyrogram import filters, enums, ForceReply
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ForceReply
 
 from main.utils import progress_message, humanbytes
