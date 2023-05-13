@@ -3,7 +3,7 @@ from pyrogram import Client, filters, enums
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ForceReply
 from config import DOWNLOAD_LOCATION, CAPTION, ADMIN, GROUP_ID
 from main.utils import progress_message, humanbytes
-from bot import user
+
 
 @Client.on_message(filters.group & (filters.document | filters.video | filters.audio))         
 async def rename_file(bot, msg):
@@ -41,7 +41,7 @@ async def refunc(bot, msg):
     if (reply_message.reply_markup) and isinstance(reply_message.reply_markup, ForceReply):
         new_name = msg.text
         cp_name = new_name + " " + "@SingleMachiOffl"
-        get = await user.get_messages(msg.chat.id, reply_message.id)
+        get = await app2.get_messages(msg.chat.id, reply_message.id)
         file = get.reply_to_message
         media = getattr(file, file.media.value)
         if not "." in new_name:
@@ -75,7 +75,7 @@ async def refunc(bot, msg):
         await sts.edit("Trying to Uploading")
         c_time = time.time()
         try:
-            await user.send_document(msg.chat.id, document=downloaded, thumb=og_thumbnail, caption=cap, progress=progress_message, progress_args=("Upload Started.....", sts, c_time))        
+            await app2.send_document(msg.chat.id, document=downloaded, thumb=og_thumbnail, caption=cap, progress=progress_message, progress_args=("Upload Started.....", sts, c_time))        
         except Exception as e:  
             return await sts.edit(f"Error {e}")                       
         try:
