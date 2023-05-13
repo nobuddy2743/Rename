@@ -42,6 +42,7 @@ async def rename(bot, message):
                 name = new_name.rsplit('.', 1)[-1]
                 cp_name = name_name + " " + "@SingleMachiOffl"
                 f_name = cp_name + ".MKV"
+            await bot.send_message(message.chat.id, f_name)
             c_time = time.time()
             downloaded = await file.download(file_name=f_name, progress=progress_message, progress_args=("Downloading...", sts, c_time))  
             if CAPTION:
