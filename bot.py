@@ -3,28 +3,22 @@ from config import *
 import os
 
 
-class Bot(Client):
-    if not os.path.isdir(DOWNLOAD_LOCATION):
-        os.makedirs(DOWNLOAD_LOCATION)
+plugins = dict( root="plugins")
+    Bot = pyrogram.Client(
+        "AnyDLBot",
+        bot_token=Config.TG_BOT_TOKEN,
+        api_id=Config.APP_ID,
+        api_hash=Config.API_HASH,
+        plugins=plugins)
 
-    def __init__(self):
-        super().__init__(
-            name="simple-renamer",
-            api_id=API_ID,
-            api_hash=API_HASH,
-            bot_token=BOT_TOKEN,
-            workers=100,
-            plugins={"root": "main"},
-            sleep_threshold=10,
-        )
-    async def start(self):
-        await super().start()
-        me = await self.get_me()      
-        print(f"{me.first_name} | @{me.username} 𝚂𝚃𝙰𝚁𝚃𝙴𝙳...⚡️")
-       
-    async def stop(self, *args):
-       await super().stop()      
-       print("Bot Restarting........")
+    app2 = pyrogram.Client(
+        "Userbot",
+        api_id=Config.APP_ID,
+        api_hash=Config.API_HASH,
+        user_session="hdjsjd")
+
+    app1.run()
+    app2.run()
 
     
 user = Client(
