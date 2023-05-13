@@ -33,7 +33,7 @@ async def rename(bot, message):
     file_name = og_media.file_name
     if message.chat.id == GROUP_ID:
         if reply and reply.media:
-            sts = await bot.reply_text("Renaming...")
+            sts = await message.reply_text("Renaming...")
             new_name = file_name.split("-")[1]
             if not "." in new_name:
                 cp_name = new_name + " " + "@SingleMachiOffl"
