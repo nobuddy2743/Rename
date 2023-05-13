@@ -75,8 +75,8 @@ async def rename(bot, message):
             except:
                 pass
             await sts.delete()
-       else:
-            await bot.send_message("It is fully automatic rename function.Reply with any file to rename")
+    else:
+       await bot.send_message("It is fully automatic rename function.Reply with any file to rename")
 
        
         
