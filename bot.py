@@ -44,10 +44,10 @@ async def rename(bot, message):
             c_time = time.time()
             downloaded = await app2.download(file_name=f_name, progress=progress_message, progress_args=("Downloading...", sts, c_time))  
             if CAPTION:
-            try:
-                cap = CAPTION.format(file_name=cp_name)
-            except Exception as e:            
-                return await sts.edit(text=f"Your caption Error unexpected keyword ●> ({e})")           
+                try:
+                    cap = CAPTION.format(file_name=cp_name)
+                except Exception as e:            
+                    return await sts.edit(text=f"Your caption Error unexpected keyword ●> ({e})")           
             else:
                 cap = f"{cp_name}"
 
