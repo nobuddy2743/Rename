@@ -43,7 +43,7 @@ async def rename(bot, message):
                 cp_name = name_name + " " + "@SingleMachiOffl"
                 f_name = cp_name + ".MKV"
             c_time = time.time()
-            downloaded = await app2.download(file_name=f_name, progress=progress_message, progress_args=("Downloading...", sts, c_time))  
+            downloaded = await file.download(file_name=f_name, progress=progress_message, progress_args=("Downloading...", sts, c_time))  
             if CAPTION:
                 try:
                     cap = CAPTION.format(file_name=cp_name)
