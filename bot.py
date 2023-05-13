@@ -1,4 +1,4 @@
-from pyrogram import Client
+from pyrogram import Client, idle
 from config import *
 import os
 import time
