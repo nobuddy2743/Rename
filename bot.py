@@ -25,7 +25,56 @@ app2 = Client(
         api_hash=API_HASH,
         session_string=User_Session)
 
+@app1.on_message(filters.command('rn')  & filters.group & filters.reply)
+async def rename(bot, messages):
+    reply = message.reply_to_message
+    og_media = getattr(message, message.media.value)
+    file_name = og_media.filename
+    if message.chat.id == GROUP_ID:
+        if reply and reply.media:
+            await bot.reply_text("Renaming...")
+            new_name = file_name.split(" ", 1)[1]
+            if not "." in new_name:
+                f_name = new_name + " " + "@SingleMachiOffl" + ".MKV"
+            else 
+                name = new_name.rsplit('.', 1)[-1]
+                f_name = name_name + " " + "@SingleMachiOffl" + ".MKV"
+            downloaded = await app2.download(file_name=f_name, progress=progress_message, progress_args=("Downloading...", sts, c_time))  
+            if CAPTION:
+            try:
+                cap = CAPTION.format(file_name=cp_name)
+            except Exception as e:            
+                return await sts.edit(text=f"Your caption Error unexpected keyword ●> ({e})")           
+            else:
+                cap = f"{cp_name}"
 
+            dir = os.listdir(DOWNLOAD_LOCATION)
+            if len(dir) == 0:
+                file_thumb = await bot.download_media(media.thumbs[0].file_id)
+                og_thumbnail = file_thumb
+            else:
+                try:
+                    og_thumbnail = f"{DOWNLOAD_LOCATION}/thumbnail.jpg"
+                except Exception as e:
+                    print(e)        
+                    og_thumbnail = None
+        
+            await sts.edit("Trying to Uploading")
+            c_time = time.time()
+            try:
+                await app2.send_document(msg.chat.id, document=downloaded, thumb=og_thumbnail, caption=cap, progress=progress_message, progress_args=("Upload Started.....", sts, c_time))        
+            except Exception as e:  
+                return await sts.edit(f"Error {e}")                       
+            try:
+                if file_thumb:
+                    os.remove(file_thumb)
+                os.remove(downloaded)      
+            except:
+                pass
+            await sts.delete()
+            await msg.delete()
+            await reply_message.delete()
+        
 @app1.on_message(filters.group & (filters.document | filters.video | filters.audio))         
 async def rename_file(bot, msg):
     media = msg.document or msg.audio or msg.video
