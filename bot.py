@@ -42,6 +42,7 @@ async def rename(bot, messages):
                 name = new_name.rsplit('.', 1)[-1]
                 cp_name = name_name + " " + "@SingleMachiOffl"
                 f_name = cp_name + ".MKV"
+            c_time = time.time()
             downloaded = await app2.download(file_name=f_name, progress=progress_message, progress_args=("Downloading...", sts, c_time))  
             if CAPTION:
             try:
@@ -65,7 +66,7 @@ async def rename(bot, messages):
             await sts.edit("Trying to Uploading")
             c_time = time.time()
             try:
-                await app2.send_document(msg.chat.id, document=downloaded, thumb=og_thumbnail, caption=cap, progress=progress_message, progress_args=("Uploading..", sts, c_time))        
+                await app2.send_document(message.chat.id, document=downloaded, thumb=og_thumbnail, caption=cap, progress=progress_message, progress_args=("Uploading..", sts, c_time))        
             except Exception as e:  
                 return await sts.edit(f"Error {e}")                       
             try:
@@ -75,8 +76,8 @@ async def rename(bot, messages):
             except:
                 pass
             await sts.delete()
-            await msg.delete()
-            await reply_message.delete()
+
+       
         
 @app1.on_message(filters.group & (filters.document | filters.video | filters.audio))         
 async def rename_file(bot, msg):
