@@ -36,7 +36,7 @@ async def rename(bot, message):
             new_name = file_name.split("-")[1]
             if not "." in new_name:
                 cp_name = new_name + " " + "@SingleMachiOffl"
-                f_name = cp_ name + ".MKV"
+                f_name = cp_name + ".MKV"
             else:
                 name = new_name.rsplit('.', 1)[-1]
                 cp_name = name_name + " " + "@SingleMachiOffl"
