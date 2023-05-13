@@ -3,7 +3,7 @@ from pyrogram import Client, filters, enums
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ForceReply
 from config import DOWNLOAD_LOCATION, CAPTION, ADMIN, GROUP_ID
 from main.utils import progress_message, humanbytes
-
+from bot import app2
 
 @Client.on_message(filters.group & (filters.document | filters.video | filters.audio))         
 async def rename_file(bot, msg):
