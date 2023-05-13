@@ -18,7 +18,7 @@ app2 = Client(
         "Userbot",
         api_id=API_ID,
         api_hash=API_HASH,
-        user_session=User_Session)
+        session_string=User_Session)
 
 
     
