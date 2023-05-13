@@ -7,7 +7,7 @@ plugins = dict( root="plugins")
 app1 = Client(
         "AnyDLBot",
         bot_token=BOT_TOKEN,
-        api_id=APP_ID,
+        api_id=API_ID,
         api_hash=API_HASH,
         plugins=plugins)
 
