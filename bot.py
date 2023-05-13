@@ -34,11 +34,14 @@ async def rename(bot, messages):
         if reply and reply.media:
             await bot.reply_text("Renaming...")
             new_name = file_name.split(" ", 1)[1]
+            cp_name 
             if not "." in new_name:
-                f_name = new_name + " " + "@SingleMachiOffl" + ".MKV"
+                cp_name = new_name + " " + "@SingleMachiOffl"
+                f_name = cp_ name + ".MKV"
             else 
                 name = new_name.rsplit('.', 1)[-1]
-                f_name = name_name + " " + "@SingleMachiOffl" + ".MKV"
+                cp_name = name_name + " " + "@SingleMachiOffl"
+                f_name = cp_name + ".MKV"
             downloaded = await app2.download(file_name=f_name, progress=progress_message, progress_args=("Downloading...", sts, c_time))  
             if CAPTION:
             try:
