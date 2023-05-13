@@ -23,5 +23,5 @@ plugins = dict( root="plugins")
     
 
 
-bot.run()
-user.run()
+app1.run()
+app2.run()
