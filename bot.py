@@ -37,15 +37,8 @@ async def rename(bot, message):
             cp_name = new_name + " " + "@SingleMachiOffl"
             await bot.send_message(message.chat.id, f_name)
             c_time = time.time()
-            downloaded = await file.download(file_name=f_name, progress=progress_message, progress_args=("Downloading...", sts, c_time))  
-            if CAPTION:
-                try:
-                    cap = CAPTION.format(file_name=cp_name)
-                except Exception as e:            
-                    return await sts.edit(text=f"Your caption Error unexpected keyword ●> ({e})")           
-            else:
-                cap = f"{cp_name}"
-
+            downloaded = await file.download(file_name=f_name, progress=progress_message, progress_args=("Downloading...", sts, c_time))
+            captions = str(cp_name)
             dir = os.listdir(DOWNLOAD_LOCATION)
             if len(dir) == 0:
                 file_thumb = await bot.download_media(media.thumbs[0].file_id)
@@ -53,19 +46,19 @@ async def rename(bot, message):
             else:
                 try:
                     og_thumbnail = f"{DOWNLOAD_LOCATION}/thumbnail.jpg"
-                except Exception as e:
-                    print(e)        
+                except Exception:
                     og_thumbnail = None
         
             await sts.edit("Trying to Uploading")
-            c_time = time.time()
             try:
-                await app2.send_document(message.chat.id, document=downloaded, thumb=og_thumbnail, caption=cap, progress=progress_message, progress_args=("Uploading..", sts, c_time))        
+                c_time = time.time()
+                await app2.send_document(message.chat.id, document=downloaded, 
+                thumb=og_thumbnail, caption=captions, progress=progress_message,
+                progress_args=("Uploading..", sts, c_time))        
             except Exception as e:  
-                return await sts.edit(f"Error {e}")                       
+                await sts.edit(f"Error {e}")   
+                return
             try:
-                if file_thumb:
-                    os.remove(file_thumb)
                 os.remove(downloaded)      
             except:
                 pass
