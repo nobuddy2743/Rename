@@ -30,41 +30,37 @@ async def rename(bot, message):
     file = await bot.get_messages(message.chat.id, reply.id)
     og_media = getattr(file, file.media.value)
     file_name = message.reply_to_message.caption
-    if message.chat.id == GROUP_ID:
-        if reply and reply.media:
-            sts = await message.reply_text("Renaming...")
-            new_name = file_name.split(" ", 1)[-1]
-            cp_name = new_name + " " + "@SingleMachiOffl"
-            await bot.send_message(message.chat.id, f_name)
+    if reply and reply.media:
+        imog = await message.reply_text("Renaming...")
+        new_name = file_name.split(" ", 1)[-1]
+        caption_text = new_name + " " + "@SingleMachiOffl"
+        try:
             c_time = time.time()
-            downloaded = await file.download(file_name=f_name, progress=progress_message, progress_args=("Downloading...", sts, c_time))
-            captions = str(cp_name)
-            dir = os.listdir(DOWNLOAD_LOCATION)
-            if len(dir) == 0:
-                file_thumb = await bot.download_media(media.thumbs[0].file_id)
-                og_thumbnail = file_thumb
-            else:
-                try:
-                    og_thumbnail = f"{DOWNLOAD_LOCATION}/thumbnail.jpg"
-                except Exception:
-                    og_thumbnail = None
-        
-            await sts.edit("Trying to Uploading")
+            downloaded = await bot.download_media(message=message.reply_to_message,
+            file_name=file_name, progress=progress_message, progress_args=("Downloading...", imog, c_time))
+        except Exception as e:
+            await imog.edit(text=f"ERROR : {e}")
+            return
+        captions = str(caption_text)
+        #thumb_path = works pending
+        file_thumb = await bot.download_media(message=raw_thumb, file_name=thumb_path)
+        await imog.edit("Trying to Upload")
+        try:
+            c_time = time.time()
+            await app2.send_document(message.chat.id, document=downloaded, 
+            thumb=og_thumbnail, caption=captions, progress=progress_message,
+            progress_args=("Uploading...", imog, c_time))
+        except Exception as e:  
+            os.remove(downloaded)
+            await imog.edit(text=f"ERROR : {e}")   
+        else:
             try:
-                c_time = time.time()
-                await app2.send_document(message.chat.id, document=downloaded, 
-                thumb=og_thumbnail, caption=captions, progress=progress_message,
-                progress_args=("Uploading..", sts, c_time))        
-            except Exception as e:  
-                await sts.edit(f"Error {e}")   
-                return
-            try:
-                os.remove(downloaded)      
+                os.remove(downloaded)
             except:
                 pass
-            await sts.delete()
+            await imog.delete()
     else:
-       await bot.send_message("It is fully automatic rename function.Reply with any file to rename")
+        await bot.send_message("It is fully automatic rename function.Reply with any file to rename")
 
        
         
