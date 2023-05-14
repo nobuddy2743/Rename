@@ -43,8 +43,17 @@ async def rename(bot, message):
             return
         captions = str(caption_text)
         #thumb_path = works pending
-        raw_thumb = reply.photo.file_id
-        file_thumb = await bot.download_media(message=raw_thumb, file_name=thumb_path)
+        #file_thumb = await bot.download_media(message=raw_thumb, file_name=thumb_path)
+        dir = os.listdir(DOWNLOAD_LOCATION)
+        if len(dir) == 0:
+            file_thumb = await bot.download_media(og_media.thumbs[0].file_id)
+            og_thumbnail = file_thumb
+        else:
+            try:
+                og_thumbnail = f"{DOWNLOAD_LOCATION}/thumbnail.jpg"
+            except Exception as e:
+                print(e)        
+                og_thumbnail = None
         await imog.edit("Trying to Upload")
         try:
             c_time = time.time()
