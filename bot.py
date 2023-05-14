@@ -165,6 +165,8 @@ async def refunc(bot, msg):
 
 app1.start()
 app2.start()
+print("BOT STARTED 👶🏼")
 idle()
 app1.stop()
 app2.stop()
+print("BOT STOPPED 🌚")
