@@ -30,18 +30,12 @@ async def rename(bot, message):
     reply = message.reply_to_message
     file = await bot.get_messages(message.chat.id, reply.id)
     og_media = getattr(file, file.media.value)
-    file_name = og_media.file_name
+    file_name = message.reply_to_message.caption
     if message.chat.id == GROUP_ID:
         if reply and reply.media:
             sts = await message.reply_text("Renaming...")
-            new_name = file_name.split("-")[1]
-            if not "." in new_name:
-                cp_name = new_name + " " + "@SingleMachiOffl"
-                f_name = cp_name + ".MKV"
-            else:
-                name = new_name.rsplit('.', 1)[-1]
-                cp_name = name_name + " " + "@SingleMachiOffl"
-                f_name = cp_name + ".MKV"
+            new_name = file_name.split(" ", 1)[-1]
+            cp_name = new_name + " " + "@SingleMachiOffl"
             await bot.send_message(message.chat.id, f_name)
             c_time = time.time()
             downloaded = await file.download(file_name=f_name, progress=progress_message, progress_args=("Downloading...", sts, c_time))  
