@@ -6,20 +6,15 @@ from pyrogram import filters, enums
 from main.utils import progress_message, humanbytes
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ForceReply
 
+app1 = Client("RBOT",
+       api_id=Config.API_ID,
+       api_hash=Config.API_HASH,
+       bot_token=Config.BOT_TOKEN)
 
-app1 = Client(
-        "AnyDLBot",
-        bot_token=Config.BOT_TOKEN,
-        api_id=Config.API_ID,
-        api_hash=Config.API_HASH)
-        
-
-app2 = Client(
-        "Userbot",
-        api_id=Config.API_ID,
-        api_hash=Config.API_HASH,
-        session_string=Config.USESSION)
-
+app2 = Client("UBOT",
+       api_id=Config.API_ID,
+       api_hash=Config.API_HASH,
+       session_string=Config.USESSION)
 
 @app1.on_message(filters.command('rn')  & filters.group & filters.reply)
 async def rename(bot, message):
@@ -60,7 +55,6 @@ async def rename(bot, message):
         await bot.send_message("It is fully automatic rename function.Reply with any file to rename")
 
        
-        
 @app1.on_message(filters.group & (filters.document | filters.video | filters.audio))         
 async def rename_file(bot, msg):
     media = msg.document or msg.audio or msg.video
@@ -74,7 +68,6 @@ async def rename_file(bot, msg):
        return await msg.reply_text(text=text, reply_to_message_id=msg.id, reply_markup=InlineKeyboardMarkup(buttons))
     else:
        return 
-
 
 @app1.on_callback_query(filters.regex('cancel'))
 async def cancel(bot, msg):
