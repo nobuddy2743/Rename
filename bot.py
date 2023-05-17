@@ -18,27 +18,7 @@ app2 = Client("UBOT",
        session_string=Config.USESSION)
 
 
-async def rename(bot, message, file_name, media)
-    if media is not none:
-        func = await bot.send_message("Renaming")
-        caption_text = file_name + " " + "@SingleMachiOffl"
-        try:
-            c_time = time.time()
-            downloaded = await app2.download_media(message=media, 
-            file_name=file_name, progress=progress_message, progress_args=("Downloading..."), func, ctime))
-        except Exception as e:
-            await func.edit(text=f"ERROR - {e}")
-            return
-        captions = str(caption_text)
-        #file thumb = clinton will add later 🤗
-        await func.edit("Uploading...")
-        try:
-            c_time = time.time()
-            await app2.send_document(message.chat.id, document=downloaded,
-            thumb=thumbnail, caption=captions, progress=progress_messsge,progress_args=("Uploading...", func, c_time)
-                   
-       
-       
+
 @app1.on_message(filters.command('rn')  & filters.group & filters.reply)
 async def rename(bot, message):
     reply = message.reply_to_message
