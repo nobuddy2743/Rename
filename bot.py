@@ -56,7 +56,14 @@ async def rename(bot, message):
 
        
 
+@app1.on_message(filters.command("rename") & filters.relpy & filters.group)
+    async manualrename(bot, message):
+    filename = message.text
+    try
 
+:
+        file_name = filename.rsplit(" ")(1)
+        ntf = await bot.send_message("Renaming")
 
     
 
