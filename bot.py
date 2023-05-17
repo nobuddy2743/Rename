@@ -1,11 +1,10 @@
-from pyrogram import Client, idle
-from config import Config
 import os
 import time
+from config import Config
+from pyrogram import Client, idle
 from pyrogram import filters, enums
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ForceReply
-
 from main.utils import progress_message, humanbytes
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ForceReply
 
 
 app1 = Client(
@@ -20,6 +19,7 @@ app2 = Client(
         api_id=Config.API_ID,
         api_hash=Config.API_HASH,
         session_string=Config.USESSION)
+
 
 @app1.on_message(filters.command('rn')  & filters.group & filters.reply)
 async def rename(bot, message):
@@ -82,17 +82,12 @@ async def cancel(bot, msg):
         await msg.message.delete()
     except:
         return
-    
 
 @app1.on_callback_query(filters.regex('rename'))
 async def rename(bot, msg):
     await msg.message.delete()
     await msg.message.reply_text("Enter New Filename...", reply_to_message_id = msg.message.reply_to_message.id, reply_markup=ForceReply(True))
     
-    
-    
-
-
 
 @app1.on_message(filters.group & filters.reply)
 async def refunc(bot, msg):
