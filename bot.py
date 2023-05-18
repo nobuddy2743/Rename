@@ -32,8 +32,8 @@ async def amname(bot, update):
     fileoath = await Xownload(bot, update, imog, download_location)
     if fileoath == None:
         return
-    await imog.edit("Trying to Upload")
-    file_thumb = await Townload(bot, update)
+    await imog.edit(text="Trying to Upload")
+    # UPLOADER ------ SOON
 
 app1.start()
 app2.start()
