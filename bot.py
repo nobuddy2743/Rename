@@ -3,7 +3,7 @@ from config import Config
 from pyrogram import Client, idle
 from pyrogram import filters, enums
 from main.module01 import Xownload
-from main.utils import progress_message, humanbytes
+from main.module02 import progress, humanbytes
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ForceReply
 
 app1 = Client("RBOT",
