@@ -24,8 +24,9 @@ async def Townload(bot, update):
     else:
         rawthumbs = "AgACAgUAAxkBAAENi49kZgZkQkJy5xphV4LMbve8tvXZgwACF7QxG6Z0-FRWEf5UF891hgEAAwIAA3gAAy8E"
     try:
+        incomings = update.photo.file_id
         thumbpath = Config.DOWNLOADS + "/" + str(update.from_user.id) + ".jpg"  
-        thumbnail = await bot.download_media(message=rawthumbs, file_name=thumbpath)
+        thumbnail = await bot.download_media(message=incomings, file_name=thumbpath)
     except Exception as e:
         print(e)
         thumbnail = None
