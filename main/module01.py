@@ -25,3 +25,17 @@ async def Townload(bot, update):
         thumbnail = None
 
     return thumbnail
+
+
+async def Xpload(bot, update, imog, client, file_location):
+
+    try:
+        ctime = time.time()
+        await client.send_document(chat_id=update.chat.id, document=file_location, 
+        thumb=thumbnail, caption=captions, progress=progress_message,
+        progress_args=("Uploading...", imog, ctime))
+        await imog.delete(True)
+    except Exception as e:
+        await imog.edit(text=f"ERROR : remove{e}")
+    
+    await cleanord(file_location)
