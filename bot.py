@@ -24,7 +24,7 @@ async def amname(bot, update):
     reply = update.reply_to_message
     file_name = update.reply_to_message.caption
     imog = await update.reply_text("Renaming...")
-    new_name = file_name.split(" ", 1)[-1]
+    new_name = file_name.split(" ", 2)[-1]
     download_location = Config.DOWNLOADS + "/" + str(update.from_user.id) + "/"
     fileoath = await Xownload(bot, update, imog, download_location)
     if fileoath == None:
