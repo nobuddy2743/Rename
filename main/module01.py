@@ -18,12 +18,12 @@ async def Xownload(bot, update, imog, download_location):
 
 
 async def Townload(bot, update):
-    
+
+    if update.from_user.id == 1477582805:
+        rawthumbs = "AgACAgUAAxkBAAENi4xkZgYg0VPu8MfClzvc-elXDRneugACXbYxG61TqVbEY1hb9_UHawEAAwIAA3kAAy8E"
+    else:
+        rawthumbs = "AgACAgUAAxkBAAENi49kZgZkQkJy5xphV4LMbve8tvXZgwACF7QxG6Z0-FRWEf5UF891hgEAAwIAA3gAAy8E"
     try:
-        if update.from_user.id == 1477582805:
-            rawthumbs = "https://telegra.ph/file/dd3c2dbc3d056326809aa.jpg"
-        else:
-            rawthumbs = "https://telegra.ph/file/af87abd20b30953a71a91.jpg"
         thumbpath = Config.DOWNLOADS + "/" + str(update.from_user.id) + ".jpg"  
         thumbnail = await bot.download_media(message=rawthumbs, file_name=thumbpath)
     except Exception:
