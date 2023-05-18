@@ -32,7 +32,7 @@ async def amname(bot, update):
         return
     os.rename(download_location, 
     await imog.edit(text="Trying to Upload")
-    asyncio.create_task(Xpload(bot, update, imog, client, new_name, fileoath))
+    asyncio.create_task(Xpload(bot, update, imog, app2, new_name, fileoath))
 
 app1.start()
 app2.start()
