@@ -20,8 +20,7 @@ async def Townload(bot, update, download_location):
     try:
         rawthumbs = "https://telegra.ph/file/af87abd20b30953a71a91.jpg"
         thumbpath = Config.DOWNLOADS + "/" + str(update.from_user.id) + ".jpg"  
-        thumbnail = await bot.download_media(
-        message=rawthumbs, file_name=thumbpath)
+        thumbnail = await bot.download_media(message=rawthumbs, file_name=thumbpath)
     except Exception:
         thumbnail = None
 
