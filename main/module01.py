@@ -1,4 +1,5 @@
 import os, time
+from config import Config
 
 async def Xownload(bot, update, imog, download_location):
     try:
