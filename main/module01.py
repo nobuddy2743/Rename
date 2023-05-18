@@ -29,6 +29,7 @@ async def Townload(bot, update):
 
 async def Xpload(bot, update, imog, client, file_location):
 
+    thumbnail = await Townload(bot, update)
     try:
         ctime = time.time()
         await client.send_document(chat_id=update.chat.id, document=file_location, 
