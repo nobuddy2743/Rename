@@ -26,7 +26,7 @@ async def amname(bot, update):
     imog = await update.reply_text("Renaming...")
     new_name = file_name.split(" ", 2)[-1]
     download_location = Config.DOWNLOADS + "/" + str(update.from_user.id) + "/"
-    fileoath = await Xownload(bot, update, imog, download_location)
+    fileoath = await Xownload(bot, update, imog, app2, download_location)
     if fileoath == None:
         return
     newmedia_location = download_location + new_name
