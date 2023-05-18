@@ -2,7 +2,7 @@ import os, time, asyncio
 from config import Config
 from pyrogram import Client, idle
 from pyrogram import filters, enums
-from main.module01 import Xownload, Xpload
+from main.module01 import Xownload, Xpload, Sthumload
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ForceReply
 
 app1 = Client("RBOT",
@@ -32,7 +32,11 @@ async def amname(bot, update):
     newmedia_location = download_location + new_name
     os.rename(fileoath, newmedia_location)
     await imog.edit(text="Trying to Upload")
-    asyncio.create_task(Xpload(bot, update, imog, app2, new_name, newmedia_location))
+    await Xpload(bot, update, imog, app2, new_name, newmedia_location)
+
+@app1.on_message(filters.photo)
+async def savethumb(bot, update):
+    await Sthumload(bot, update)
 
 app1.start()
 app2.start()
