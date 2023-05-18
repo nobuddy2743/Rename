@@ -30,24 +30,8 @@ async def rename(bot, update):
     fileoath = await Xownload(bot, update, imog, download_location)
     if fileoath == None:
         return
-    #thumb_path = works pending
-    file_thumb = await bot.download_media(message=raw_thumb, file_name=thumb_path)
     await imog.edit("Trying to Upload")
-    try:
-        ctime = time.time()
-        await app2.send_document(message.chat.id, document=downloaded, 
-        thumb=og_thumbnail, caption=captions, progress=progress_message,
-        progress_args=("Uploading...", imog, ctime))
-    except Exception as e:  
-        os.remove(downloaded)
-        await imog.edit(text=f"ERROR : {e}")   
-        else:
-            try:
-                os.remove(downloaded)
-            except:
-                pass
-            await imog.delete(True)
-
+    file_thumb = await Townload(bot, update)
 
 app1.start()
 app2.start()
