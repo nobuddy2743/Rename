@@ -11,12 +11,14 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ForceRepl
 app1 = Client("RBOT",
        api_id=Config.API_ID,
        api_hash=Config.API_HASH,
-       bot_token=Config.BOT_TOKEN)
+       bot_token=Config.BOT_TOKEN
+       parse_mode=enums.ParseMode.HTML)
 
 app2 = Client("UBOT",
        api_id=Config.API_ID,
        api_hash=Config.API_HASH,
-       session_string=Config.USESSION)
+       session_string=Config.USESSION,
+       parse_mode=enums.ParseMode.HTML)
 
 #======================================================================================
 
