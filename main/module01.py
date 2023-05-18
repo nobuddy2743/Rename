@@ -1,5 +1,6 @@
 import os, time
 from config import Config
+from main.module02 import progress, humanbytes
 
 async def Xownload(bot, update, imog, download_location):
     try:
