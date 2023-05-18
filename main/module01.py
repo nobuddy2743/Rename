@@ -26,7 +26,8 @@ async def Townload(bot, update):
     try:
         thumbpath = Config.DOWNLOADS + "/" + str(update.from_user.id) + ".jpg"  
         thumbnail = await bot.download_media(message=rawthumbs, file_name=thumbpath)
-    except Exception:
+    except Exception as e:
+        print(e)
         thumbnail = None
 
     return thumbnail
