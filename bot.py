@@ -1,5 +1,4 @@
-import os
-import time
+import os, time, asyncio
 from config import Config
 from pyrogram import Client, idle
 from pyrogram import filters, enums
