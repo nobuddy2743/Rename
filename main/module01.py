@@ -13,3 +13,13 @@ async def Xownload(bot, update, imog, download_location):
         file_location = None
 
     return file_location
+
+
+async def Townload(bot, update, download_location):
+    try:
+        thumbnail = await bot.download_media(
+        message=thumbink, file_name=download_location)
+    except Exception:
+        thumbnail = None
+
+    return thumbnail
