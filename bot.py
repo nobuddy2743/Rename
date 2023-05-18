@@ -18,24 +18,16 @@ app2 = Client("UBOT",
        session_string=Config.USESSION)
 
 
-
 @app1.on_message(filters.command('rn')  & filters.group & filters.reply)
 async def rename(bot, message):
     reply = message.reply_to_message
     file = await bot.get_messages(message.chat.id, reply.id)
     og_media = getattr(file, file.media.value)
     file_name = message.reply_to_message.caption
-    if reply and reply.media:
-        imog = await message.reply_text("Renaming...")
-        new_name = file_name.split(" ", 1)[-1]
-        caption_text = new_name + " " + "@SingleMachiOffl"
-        try:
-            c_time = time.time()
-            downloaded = await app2.download_media(message=message.reply_to_message,
-            file_name=file_name, progress=progress_message, progress_args=("Downloading...", imog, c_time))
-        except Exception as e:
-            await imog.edit(text=f"ERROR : {e}")
-            return
+    imog = await message.reply_text("Renaming...")
+    new_name = file_name.split(" ", 1)[-1]
+    caption_text = new_name + " " + "@SingleMachiOffl"
+
         captions = str(caption_text)
         #thumb_path = works pending
         file_thumb = await bot.download_media(message=raw_thumb, file_name=thumb_path)
@@ -57,13 +49,7 @@ async def rename(bot, message):
     else:
         await bot.send_message("It is fully automatic rename function.Reply with any file to rename")
 
-       
 
-
-
-   
-    
-    
 
 app1.start()
 app2.start()
