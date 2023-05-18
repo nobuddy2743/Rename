@@ -1,6 +1,6 @@
 import time
 
-async def Xownload(bot, update, imog, download_location)
+async def Xownload(bot, update, imog, download_location):
     try:
         ctime = time.time()
         file_location = await bot.download_media(
