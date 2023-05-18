@@ -23,7 +23,7 @@ app2 = Client("UBOT",
 #======================================================================================
 
 @app1.on_message(filters.command('rn')  & filters.group)
-async def rename(bot, update):
+async def amname(bot, update):
     reply = update.reply_to_message
     file_name = message.reply_to_message.caption
     imog = await message.reply_text("Renaming...")
