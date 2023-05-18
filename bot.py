@@ -1,5 +1,4 @@
 import os
-
 import time
 from config import Config
 from pyrogram import Client, idle
@@ -33,7 +32,7 @@ async def amname(bot, update):
     if fileoath == None:
         return
     await imog.edit(text="Trying to Upload")
-    # UPLOADER ------ SOON
+    asyncio.create_task(Xpload(bot, update, imog, client, fileoath))
 
 app1.start()
 app2.start()
