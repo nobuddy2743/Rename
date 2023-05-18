@@ -26,11 +26,11 @@ async def amname(bot, update):
     file_name = message.reply_to_message.caption
     imog = await message.reply_text("Renaming...")
     new_name = file_name.split(" ", 1)[-1]
-    download_location = Config.DOWNLOAD + "/" + str(update.from_user.id) + "/" + file_name
+    download_location = Config.DOWNLOAD + "/" + str(update.from_user.id) + "/" + new_name
     fileoath = await Xownload(bot, update, imog, download_location)
     if fileoath == None:
         return
-    os.rename(download_location, 
+    os.rename(fileoath, download_location)
     await imog.edit(text="Trying to Upload")
     asyncio.create_task(Xpload(bot, update, imog, app2, new_name, fileoath))
 
