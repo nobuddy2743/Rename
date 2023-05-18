@@ -18,8 +18,9 @@ app2 = Client("UBOT",
        api_hash=Config.API_HASH,
        session_string=Config.USESSION)
 
+#======================================================================================
 
-@app1.on_message(filters.command('rn')  & filters.group & filters.reply)
+@app1.on_message(filters.command('rn')  & filters.group)
 async def rename(bot, update):
     reply = update.reply_to_message
     file_name = message.reply_to_message.caption
@@ -45,10 +46,7 @@ async def rename(bot, update):
                 os.remove(downloaded)
             except:
                 pass
-            await imog.delete()
-    else:
-        await bot.send_message("It is fully automatic rename function.Reply with any file to rename")
-
+            await imog.delete(True)
 
 
 app1.start()
