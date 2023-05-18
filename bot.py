@@ -2,7 +2,7 @@ import os, time, asyncio
 from config import Config
 from pyrogram import Client, idle
 from pyrogram import filters, enums
-from main.module01 import Xownload
+from main.module01 import Xownload, Xpload
 from main.module02 import progress, humanbytes
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ForceReply
 
@@ -27,6 +27,7 @@ async def amname(bot, update):
     imog = await message.reply_text("Renaming...")
     new_name = file_name.split(" ", 1)[-1]
     captions = new_name + " " + "@SingleMachiOffl"
+    download_location = Config.DOWNLOAD + "/" + str(update.from_user.id) + "/" + file_name
     fileoath = await Xownload(bot, update, imog, download_location)
     if fileoath == None:
         return
@@ -35,6 +36,11 @@ async def amname(bot, update):
 
 app1.start()
 app2.start()
+if not os.path.isdir(Config.DOWNLOADS):
+    os.makedirs(Config.DOWNLOADS)
+else:
+    shutil.rmtree(Config.DOWNLOADS)
+    os.makedirs(Config.DOWNLOADS)
 print("BOT STARTED 👶🏼")
 idle()
 app1.stop()
