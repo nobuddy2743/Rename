@@ -1,4 +1,4 @@
-import time
+import os, time
 
 async def Xownload(bot, update, imog, download_location):
     try:
