@@ -19,19 +19,23 @@ async def Xownload(bot, update, imog, download_location):
 
 async def Townload(bot, update):
 
-    if update.from_user.id == 1477582805:
-        rawthumbs = "AgACAgUAAxkBAAENi4xkZgYg0VPu8MfClzvc-elXDRneugACXbYxG61TqVbEY1hb9_UHawEAAwIAA3kAAy8E"
-    else:
-        rawthumbs = "AgACAgUAAxkBAAENi49kZgZkQkJy5xphV4LMbve8tvXZgwACF7QxG6Z0-FRWEf5UF891hgEAAwIAA3gAAy8E"
     try:
-        incomings = update.photo.file_id
-        thumbpath = Config.DOWNLOADS + "/" + str(update.from_user.id) + ".jpg"  
-        thumbnail = await bot.download_media(message=incomings, file_name=thumbpath)
+        thumbnail = Config.DOWNLOADS + "/" + str(update.from_user.id) + ".jpg"
     except Exception as e:
         print(e)
         thumbnail = None
 
     return thumbnail
+
+
+async def Sthumload(bot, update):
+
+    try:
+        incomings = update.photo.file_id
+        thumbpath = Config.DOWNLOADS + "/" + str(update.from_user.id) + ".jpg"  
+        await bot.download_media(message=incomings, file_name=thumbpath)
+    except Exception as e:
+        print(e)
 
 
 async def Xpload(bot, update, imog, client, captions, file_location):
