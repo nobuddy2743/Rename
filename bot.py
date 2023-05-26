@@ -35,9 +35,13 @@ async def amname(bot, update):
     file_name = str(update.reply_to_message.caption)
     imog = await update.reply_text("Renaming...")
     if file_name.startswith("www."):
-        new_name = file_name.split(" ", 2)[-1]
+        s_name = file_name.split(" ", 2)[-1]
     else:
-        new_name = file_name
+        s_name = file_name
+    if ".mkv" in s_name:
+        new_name = s_name.replace(".mkv", "@SingleMachiOffl.mkv")
+    else:
+        new_name = s_name
     download_location = Config.DOWNLOADS + "/" + str(update.from_user.id) + "/"
     fileoath = await Xownload(bot, update, imog, app2, download_location)
     if fileoath == None:
