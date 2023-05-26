@@ -46,8 +46,8 @@ else:
     shutil.rmtree(Config.DOWNLOADS)
     os.makedirs(Config.DOWNLOADS)
 if not os.path.isdir(Config.THUMBNAIL):
-
     os.makedirs(Config.THUMBNAIL)
+    
 print("BOT STARTED 👶🏼")
 idle()
 app1.stop()
