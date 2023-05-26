@@ -1,6 +1,6 @@
 import os, time
 from config import Config
-from CLINTON.module02 import progress, humanbytes
+from main.module02 import progress, humanbytes
 
 async def Xownload(bot, update, imog, app2, download_location):
     try:
