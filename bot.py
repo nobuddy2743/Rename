@@ -3,7 +3,7 @@ import shutil, asyncio
 from config import Config
 from pyrogram import Client, idle
 from pyrogram import filters, enums
-from CLINTON.module01 import Xownload, Xpload, Sthumload
+from main.module01 import Xownload, Xpload, Sthumload
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ForceReply
 
 app1 = Client("RBOT",
