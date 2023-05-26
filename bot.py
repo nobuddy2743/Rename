@@ -39,7 +39,7 @@ async def amname(bot, update):
     else:
         s_name = file_name
     if ".mkv" in s_name:
-        new_name = s_name.replace(".mkv", "@SingleMachiOffl.mkv")
+        new_name = s_name.replace(".mkv", " @SingleMachiOffl.mkv")
     else:
         new_name = s_name
     download_location = Config.DOWNLOADS + "/" + str(update.from_user.id) + "/"
